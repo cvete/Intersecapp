@@ -341,42 +341,57 @@ public class MainFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         //check if textField is Empty
+        
+        
+        
         if(sizeofA.getText().isEmpty() || sizeofB.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter size of List A and List B");
         }
-        else {
-            
-            //convert text in int
-            int _sizeofA = Integer.parseInt(sizeofA.getText());
-            int _sizeofB = Integer.parseInt(sizeofB.getText());
+        
+      
+        int _sizeofA , _sizeofB;
+        
+        
+        try {
+             
+             //convert text in int
+             _sizeofA = Integer.parseInt(sizeofA.getText());
+             _sizeofB = Integer.parseInt(sizeofB.getText());
              choise = whichlist.getSelectedIndex();
+             
+             
+             // Populating lists with random numbers from 1 to 20
+             listA = createRandomList(_sizeofA);
+             listB = createRandomList(_sizeofB);
+             
+             System.out.println(choise);
+             System.out.println(listA);
+             System.out.println(listB);
+             
+             
+             
+             long start2 = System.currentTimeMillis();
+             
+             setresult = intersection(listA,listB,choise);
+             
+             long end2 = System.currentTimeMillis();
+             showTime.setText("Elapsed Time in milli seconds: "+ (end2-start2));
+             
+             showListA.setText(" " + listA);
+             showListB.setText(" " + listB);
+             int setSize = setresult.size();
+             resultINT.setText("Elements of List A:" + listA);
+             resultINT.setText("Elements of List B:" + listB);
+             resultINT.setText("Size of intersection is :" + Integer.toString(setSize)+ "  List of elements: " + setresult);
+             
+         }
+        
+        catch (NumberFormatException e) {
+        JOptionPane.showConfirmDialog(null, "Please enter numbers only", "naughty", JOptionPane.CANCEL_OPTION);
+    }
+        
          
-       
-        // Populating lists with random numbers from 1 to 20
-        listA = createRandomList(_sizeofA);
-        listB = createRandomList(_sizeofB);
         
-         System.out.println(choise);
-         System.out.println(listA);
-         System.out.println(listB);
-        
-        
-         
-        long start2 = System.currentTimeMillis();
- 
-        setresult = intersection(listA,listB,choise);
-        
-        long end2 = System.currentTimeMillis();      
-        showTime.setText("Elapsed Time in milli seconds: "+ (end2-start2));
-
-         showListA.setText(" " + listA);
-         showListB.setText(" " + listB);
-         int setSize = setresult.size();
-         resultINT.setText("Elements of List A:" + listA);
-         resultINT.setText("Elements of List B:" + listB);
-         resultINT.setText("Size of intersection is :" + Integer.toString(setSize)+ "  List of elements: " + setresult);
-         
-        }
     }//GEN-LAST:event_btnRActionPerformed
 
     private void whichlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_whichlistActionPerformed
