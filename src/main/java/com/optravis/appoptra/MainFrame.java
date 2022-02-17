@@ -95,7 +95,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Finding intersection elements                      
      
-     HashSet resultSet =   (HashSet) listHS.stream()
+     HashSet resultSet = (HashSet) listHS.stream()
            .filter(secList :: contains)
            .collect(Collectors.toSet());
       
@@ -343,10 +343,7 @@ public class MainFrame extends javax.swing.JFrame {
         //check if textField is Empty
         
         
-        
-        if(sizeofA.getText().isEmpty() || sizeofB.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Please enter size of List A and List B");
-        }
+     
         
       
         int _sizeofA , _sizeofB;
