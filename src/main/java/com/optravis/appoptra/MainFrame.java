@@ -5,13 +5,12 @@
 package com.optravis.appoptra;
 
 
-import java.time.Duration;
-import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
+
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
 
@@ -46,7 +45,7 @@ public class MainFrame extends javax.swing.JFrame {
     
         Random rn = new Random();
 
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList();
     
         for(int i =0; i<size; i++) {
         
@@ -65,38 +64,35 @@ public class MainFrame extends javax.swing.JFrame {
      // Select the list that will be in HashSet
      
       HashSet listHS;
-      List secList = new ArrayList();
+      List secList ;
       
-      if(choise == 2){
-      
-          listHS = new HashSet(listB);
-          secList = listA; 
-          
-      }
-        
-      else if (choise == 1){    
-          listHS = new HashSet(listA);
-          secList = listB;
-          }
-      else {
-             if(listA.size() <= listB.size()){
-             
-            listHS = new HashSet(listA);
-            secList = listB; 
-             }else{
-             
-              listHS = new HashSet(listB);
-              secList = listA; 
-             } 
-           
-          }
+        switch (choise) {
+            case 2:
+                listHS = new HashSet(listB);
+                secList = listA;
+                break;
+            case 1:
+                listHS = new HashSet(listA);
+                secList = listB;
+                break;
+            default:
+                if(listA.size() <= listB.size()){
+                        
+                        listHS = new HashSet(listA);
+                        secList = listB;
+                        }else{
+                                
+                                listHS = new HashSet(listB);
+                                secList = listA;
+                                }  break;
+        }
      
 
 
     // Finding intersection elements                      
      
-     HashSet resultSet = (HashSet) listHS.stream()
-           .filter(secList :: contains)
+     HashSet resultSet = (HashSet) secList.stream()
+           .filter(listHS :: contains)
            .collect(Collectors.toSet());
       
         
@@ -319,15 +315,15 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sizeofBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeofBActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_sizeofBActionPerformed
 
     private void sizeofAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sizeofAActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_sizeofAActionPerformed
 
     private void resultINTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultINTActionPerformed
-        // TODO add your handling code here:
+       
         
         int setSize = setresult.size();
         
